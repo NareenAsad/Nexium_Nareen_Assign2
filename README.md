@@ -30,8 +30,8 @@ cd concisio
 pnpm install
 cp .env.local.example .env.local
 
-## 🔐 Environment Variables (.env.local)
-
+**## 🔐 Environment Variables (.env.local)
+**
 # MongoDB
 MONGODB_URI=your_mongodb_uri
 
