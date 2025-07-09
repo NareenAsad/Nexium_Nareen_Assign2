@@ -1,69 +1,144 @@
 # 🧠 Concisio — AI Blog Summarizer with Urdu Translation
 
-**Concisio** is an AI-powered blog summarizer built with **Next.js**, **LLaMA 3 (via Groq)**, **MongoDB**, and **Supabase**. It scrapes blog content from a URL, summarizes it using LLaMA 3, translates it to **Urdu**, and stores the results securely.
+Concisio is an AI-powered web application that summarizes any blog post and translates it into Urdu. Built using **Next.js**, **LLaMA 3 via Groq**, **MongoDB**, and **Supabase**, it offers a sleek interface to paste blog links, generate summaries, and store the results securely.
 
 ---
 
 ## ✨ Features
 
-- 🔗 **Paste blog URL** — Easy-to-use form to input any blog link  
-- 🤖 **AI Summary** — LLaMA 3 generates clear and concise summaries  
-- 🌐 **Urdu Translation** — Auto-translated using Google Translate API  
-- 💾 **Storage** — Blog saved to **MongoDB**, summaries to **Supabase**  
-- ⚡ **Responsive UI** — Clean interface with loading/error states
+- 🔗 **Paste Blog URL** – Input any public blog post URL
+- 🧠 **AI Summary** – Summarized using LLaMA 3 via Groq’s fast API
+- 🌐 **Urdu Translation** – Uses Google Translate API for Urdu output
+- 💾 **Storage** – Full content stored in **MongoDB**, summaries in **Supabase**
+- ⚡ **Smooth UI** – Responsive design with error handling and loading states
 
 ---
 
 ## 🛠 Tech Stack
 
-- **Frontend**: Next.js, TypeScript, Tailwind CSS, ShadCN UI  
-- **Backend**: Groq API (LLaMA 3), MongoDB, Supabase  
-- **Other**: Cheerio (web scraping), Google Translate API
+| Layer        | Technology                          |
+|--------------|-------------------------------------|
+| Frontend     | Next.js, TypeScript, Tailwind CSS, ShadCN UI |
+| Backend      | LLaMA 3 (via Groq API), MongoDB, Supabase |
+| Utilities    | Cheerio (scraping), Google Translate API |
 
 ---
 
-## 🚀 Installation
+## 🚀 Getting Started
+
+### 1. Clone the Repository
 
 ```bash
 git clone https://github.com/your-username/concisio.git
 cd concisio
-pnpm install
-cp .env.local.example .env.local
+```
 
-**## 🔐 Environment Variables (.env.local)
-**
+### 2. Install Dependencies
+
+```bash
+pnpm install
+```
+
+### 3. Create `.env.local`
+
+Copy the example file and fill in your credentials:
+
+```bash
+cp .env.local.example .env.local
+```
+
+Edit `.env.local` with the following:
+
+```env
 # MongoDB
 MONGODB_URI=your_mongodb_uri
 
 # Supabase
 NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_key
 
 # Groq API
 GROQ_API_KEY=your_groq_api_key
 
 # Google Translate
-GOOGLE_TRANSLATE_API_KEY=your_google_translate_key
+GOOGLE_TRANSLATE_API_KEY=your_translate_key
+```
 
-##📁 Project Structure
+---
+
+## 📁 Project Structure
+
+```
 app/
 ├── api/
 │   └── summarize/
-│       └── route.ts           # API route to handle summarization logic
-├── mainpage/                  # Additional route (optional)
-├── summarize/                 # Optional route
+│       └── route.ts          # API route for scraping, summarizing, translating
+├── mainpage/                 # Optional route
+├── summarize/                # Optional route
 ├── favicon.ico
-├── globals.css                # Global styles
-├── layout.tsx                 # App layout
-├── page.tsx                   # Entry page
+├── globals.css               # Global styles
+├── layout.tsx                # App shell layout
+├── page.tsx                  # Main landing page
 
 components/
-├── logos/                     # Logos
-├── sections/                  # Footer and sections
-├── ui/                        # Reusable UI elements
-├── Dashboard.tsx             # Main UI component
-├── FooterSection.tsx         # Footer
-└── Navbar.tsx                 # Navbar
+├── logos/                    # Logo files
+├── sections/                 # Reusable layout sections
+├── ui/                       # Shared UI components (Button, Card, etc.)
+├── Dashboard.tsx            # Main blog summarization UI
+├── FooterSection.tsx        # Footer component
+└── Navbar.tsx                # Navigation bar
 
 lib/
-└── translateToUrdu.ts        # Google Translate helper
+└── translateToUrdu.ts       # Translation logic
+```
+
+---
+
+## 📦 API Overview
+
+**POST** `/api/summarize`
+
+**Request Body:**
+
+```json
+{
+  "url": "https://example.com/blog-post"
+}
+```
+
+**Response:**
+
+```json
+{
+  "success": true,
+  "title": "Blog Title",
+  "content": "Full scraped blog text",
+  "summary": "AI-generated English summary",
+  "urduSummary": "Translated Urdu summary"
+}
+```
+
+---
+
+## 🧪 Example Use Cases
+
+* Translate and summarize technical articles for Urdu-speaking audiences
+* Academic research and quick blog reviews
+* Simplifying long blog posts into digestible content
+
+---
+
+## 🙌 Credits
+
+* [Groq](https://groq.com) for LLaMA 3 API
+* [Supabase](https://supabase.com) for the database & auth
+* [MongoDB](https://mongodb.com) for document storage
+* [ShadCN UI](https://ui.shadcn.com) for beautiful components
+* [Google Translate API](https://cloud.google.com/translate) for translation
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License.  
+© 2025 Nareen Asad
