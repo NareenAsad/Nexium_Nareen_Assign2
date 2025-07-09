@@ -2,13 +2,13 @@
 
 import Navbar from '@/components/Navbar';
 import FooterSection from '@/components/FooterSection';
-import Introduction from './mainpage/page';
+import Dashboard from '@/components/Dashboard';
 
-export default function HomePage() {
+export default function SummarizePage() {
   return (
     <>
       <Navbar />
-      <Introduction />
+      <Dashboard />
       <FooterSection />
     </>
   );
