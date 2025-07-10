@@ -1,36 +1,144 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🧠 Concisio — AI Blog Summarizer with Urdu Translation
 
-## Getting Started
+Concisio is an AI-powered web application that summarizes any blog post and translates it into Urdu. Built using **Next.js**, **LLaMA 3 via Groq**, **MongoDB**, and **Supabase**, it offers a sleek interface to paste blog links, generate summaries, and store the results securely.
 
-First, run the development server:
+---
+
+## ✨ Features
+
+- 🔗 **Paste Blog URL** – Input any public blog post URL
+- 🧠 **AI Summary** – Summarized using LLaMA 3 via Groq’s fast API
+- 🌐 **Urdu Translation** – Uses Google Translate API for Urdu output
+- 💾 **Storage** – Full content stored in **MongoDB**, summaries in **Supabase**
+- ⚡ **Smooth UI** – Responsive design with error handling and loading states
+
+---
+
+## 🛠 Tech Stack
+
+| Layer        | Technology                          |
+|--------------|-------------------------------------|
+| Frontend     | Next.js, TypeScript, Tailwind CSS, ShadCN UI |
+| Backend      | LLaMA 3 (via Groq API), MongoDB, Supabase |
+| Utilities    | Cheerio (scraping), Google Translate API |
+
+---
+
+## 🚀 Getting Started
+
+### 1. Clone the Repository
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/your-username/concisio.git
+cd concisio
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Install Dependencies
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+pnpm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 3. Create `.env.local`
 
-## Learn More
+Copy the example file and fill in your credentials:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+cp .env.local.example .env.local
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Edit `.env.local` with the following:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```env
+# MongoDB
+MONGODB_URI=your_mongodb_uri
 
-## Deploy on Vercel
+# Supabase
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_key
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+# Groq API
+GROQ_API_KEY=your_groq_api_key
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+# Google Translate
+GOOGLE_TRANSLATE_API_KEY=your_translate_key
+```
+
+---
+
+## 📁 Project Structure
+
+```
+app/
+├── api/
+│   └── summarize/
+│       └── route.ts          # API route for scraping, summarizing, translating
+├── mainpage/                 # Optional route
+├── summarize/                # Optional route
+├── favicon.ico
+├── globals.css               # Global styles
+├── layout.tsx                # App shell layout
+├── page.tsx                  # Main landing page
+
+components/
+├── logos/                    # Logo files
+├── sections/                 # Reusable layout sections
+├── ui/                       # Shared UI components (Button, Card, etc.)
+├── Dashboard.tsx            # Main blog summarization UI
+├── FooterSection.tsx        # Footer component
+└── Navbar.tsx                # Navigation bar
+
+lib/
+└── translateToUrdu.ts       # Translation logic
+```
+
+---
+
+## 📦 API Overview
+
+**POST** `/api/summarize`
+
+**Request Body:**
+
+```json
+{
+  "url": "https://example.com/blog-post"
+}
+```
+
+**Response:**
+
+```json
+{
+  "success": true,
+  "title": "Blog Title",
+  "content": "Full scraped blog text",
+  "summary": "AI-generated English summary",
+  "urduSummary": "Translated Urdu summary"
+}
+```
+
+---
+
+## 🧪 Example Use Cases
+
+* Translate and summarize technical articles for Urdu-speaking audiences
+* Academic research and quick blog reviews
+* Simplifying long blog posts into digestible content
+
+---
+
+## 🙌 Credits
+
+* [Groq](https://groq.com) for LLaMA 3 API
+* [Supabase](https://supabase.com) for the database & auth
+* [MongoDB](https://mongodb.com) for document storage
+* [ShadCN UI](https://ui.shadcn.com) for beautiful components
+* [Google Translate API](https://cloud.google.com/translate) for translation
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License.  
+© 2025 Nareen Asad
