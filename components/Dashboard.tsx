@@ -13,8 +13,6 @@ import {
   Database, Check, AlertTriangle
 } from "lucide-react";
 
-import FooterSection from '@/components/FooterSection';
-
 interface BlogSummary {
   title: string;
   content: string;
@@ -61,9 +59,10 @@ export default function Dashboard() {
       } else {
         throw new Error(result.error || 'Failed to summarize blog');
       }
-    } catch (err: any) {
-      setError(err.message || 'An unexpected error occurred');
-    } finally {
+      } catch (err: unknown) {
+        const error = err as Error;
+        setError(error.message || 'An unexpected error occurred');
+      }finally {
       setIsLoading(false);
     }
   };

@@ -48,12 +48,13 @@ export async function POST(request: Request) {
       urduSummary
     });
 
-  } catch (error: any) {
-    console.error('Summarize Error:', error);
+  } catch (error: unknown) {
+    const err = error as Error;
+    console.error('Summarize Error:', err);
     return NextResponse.json({
       success: false,
-      error: error.message || 'Failed to process blog',
-      details: error.name === 'AbortError' ? 'Request timed out' : undefined
+      error: err.message || 'Failed to process blog',
+      details: err.name === 'AbortError' ? 'Request timed out' : undefined
     }, { status: 500 });
   }
 }
