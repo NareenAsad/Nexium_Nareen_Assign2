@@ -26,7 +26,7 @@ export default function FooterSection({
     <footer className={cn("bg-background w-full px-4", className)}>
       <div className="max-w-7xl mx-auto">
         <Footer>
-          <FooterBottom className="text-sm text-muted-foreground flex justify-around items-center">
+          <FooterBottom className="text-sm text-muted-foreground flex items-center">
             <div>{copyright}</div>
             {showModeToggle && <ModeToggle />}
           </FooterBottom>

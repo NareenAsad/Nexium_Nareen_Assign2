@@ -84,7 +84,7 @@ export default function Dashboard() {
               <div className="space-y-2">
                 <Label htmlFor="url" className="flex items-center gap-2 text-foreground">
                   <Globe className="w-4 h-4" />
-                  Blog URL
+                  Enter Blog URL
                 </Label>
                 <div className="flex gap-2">
                   <Input
