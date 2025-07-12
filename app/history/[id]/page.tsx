@@ -3,11 +3,11 @@ import { notFound } from 'next/navigation';
 
 export const dynamic = 'force-dynamic';
 
-export default async function SummaryDetail({
-  params,
-}: {
+interface PageProps {
   params: { id: string };
-}) {
+}
+
+export default async function SummaryDetail({ params }: PageProps) {
   const supabase = createClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
@@ -16,11 +16,11 @@ export default async function SummaryDetail({
   const { data, error } = await supabase
     .from('summaries')
     .select('*')
-    .eq('id', params.id) // no need to parseInt if Supabase uses string UUIDs, but if it's number, cast it
+    .eq('id', params.id)
     .single();
 
   if (error || !data) {
-    notFound(); // This will show the 404 page
+    notFound();
   }
 
   return (
