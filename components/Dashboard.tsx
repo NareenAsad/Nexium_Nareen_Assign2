@@ -106,19 +106,6 @@ export default function Dashboard() {
                       </>
                     ) : 'Summarize'}
                   </Button>
-                  <Button
-                    type="button"
-                    variant="outline"
-                    className="py-5 px-6"
-                    onClick={() => {
-                      setUrl('');
-                      setSummary(null);
-                      setError('');
-                      setDbStatus({ mongo: false, supabase: false });
-                    }}
-                  >
-                    Reset
-                  </Button>
                 </div>
                 {error && (
                   <div className="flex items-center gap-2 text-destructive text-sm mt-1">

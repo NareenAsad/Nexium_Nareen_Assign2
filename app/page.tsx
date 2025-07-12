@@ -7,7 +7,7 @@ import Introduction from './mainpage/page';
 export default function HomePage() {
   return (
     <>
-      <Navbar />
+      <Navbar hideHistoryButton={true}/>
       <Introduction/>
       <FooterSection />
     </>
