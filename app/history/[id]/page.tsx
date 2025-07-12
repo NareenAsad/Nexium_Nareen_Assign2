@@ -3,11 +3,7 @@ import { notFound } from 'next/navigation';
 
 export const dynamic = 'force-dynamic';
 
-interface PageProps {
-  params: { id: string };
-}
-
-export default async function SummaryDetail({ params }: PageProps) {
+export default async function Page({ params }: { params: { id: string } }) {
   const supabase = createClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
@@ -19,9 +15,7 @@ export default async function SummaryDetail({ params }: PageProps) {
     .eq('id', params.id)
     .single();
 
-  if (error || !data) {
-    notFound();
-  }
+  if (error || !data) notFound();
 
   return (
     <main className="max-w-3xl mx-auto py-24 px-4 min-h-screen">
