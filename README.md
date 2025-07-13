@@ -6,10 +6,11 @@ Concisio is an AI-powered web application that summarizes any blog post and tran
 
 ## ✨ Features
 
-- 🔗 **Paste Blog URL** – Input any public blog post URL
-- 🧠 **AI Summary** – Summarized using LLaMA 3 via Groq’s fast API
-- 🌐 **Urdu Translation** – Uses Google Translate API for Urdu output
-- 💾 **Storage** – Full content stored in **MongoDB**, summaries in **Supabase**
+- 🔗 **Paste Blog URL** – Input any public blog post URL  
+- 🧠 **AI Summary** – Summarized using LLaMA 3 via Groq’s fast API  
+- 🌐 **Urdu Translation** – Uses Google Translate API for Urdu output  
+- 💾 **Storage** – Full content stored in **MongoDB**, summaries in **Supabase**  
+- 📜 **History Page** – View, revisit, or delete your past summaries  
 - ⚡ **Smooth UI** – Responsive design with error handling and loading states
 
 ---
@@ -73,6 +74,8 @@ app/
 ├── api/
 │   └── summarize/
 │       └── route.ts          # API route for scraping, summarizing, translating
+├── history/                  # History page to view past summaries
+│   └── [id]/page.tsx         # Detailed view of each summary
 ├── mainpage/                 # Optional route
 ├── summarize/                # Optional route
 ├── favicon.ico
@@ -86,7 +89,8 @@ components/
 ├── ui/                       # Shared UI components (Button, Card, etc.)
 ├── Dashboard.tsx            # Main blog summarization UI
 ├── FooterSection.tsx        # Footer component
-└── Navbar.tsx                # Navigation bar
+├── Navbar.tsx                # Navigation bar
+└── GoBackButton.tsx         # Reusable back button component
 
 lib/
 └── translateToUrdu.ts       # Translation logic
@@ -125,6 +129,7 @@ lib/
 * Translate and summarize technical articles for Urdu-speaking audiences
 * Academic research and quick blog reviews
 * Simplifying long blog posts into digestible content
+* Revisit and manage your summary history
 
 ---
 
