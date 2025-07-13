@@ -50,7 +50,15 @@ export default function HistoryPage() {
     <>
       <Navbar hideHistoryButton={true} />
       <main className="max-w-4xl mx-auto py-24 px-4 min-h-screen">
-        <h1 className="text-3xl font-bold mb-6">Summary History</h1>
+        <div className="flex items-center justify-between gap-4 mb-6">
+          <h1 className="text-3xl font-bold">Summary History</h1>
+          <button
+            onClick={() => router.back()}
+            className="text-sm px-3 py-1 bg-gray-200 hover:bg-gray-300 rounded"
+          >
+            Go Back
+          </button>
+        </div>
 
         {loading ? (
           <p>Loading...</p>
@@ -96,7 +104,7 @@ export default function HistoryPage() {
           </div>
         )}
       </main>
-      <FooterSection/>
+      <FooterSection />
     </>
   );
 }
