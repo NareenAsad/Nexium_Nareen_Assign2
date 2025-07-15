@@ -145,5 +145,4 @@ lib/
 
 ## 📄 License
 
-This project is licensed under the MIT License.  
-© 2025 Nareen Asad
+This project is part of an internship assignment and is for educational purposes.
